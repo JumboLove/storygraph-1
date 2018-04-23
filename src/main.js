@@ -4,7 +4,10 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
+import SVGPathPlugin from '@/plugins/SVGPathPlugin'
+
 Vue.config.productionTip = false
+Vue.use(SVGPathPlugin)
 
 new Vue({
   router,
