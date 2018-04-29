@@ -1,26 +1,28 @@
 <template>
   <div class="home">
-    <story-graph></story-graph>
+    <story-graph-old></story-graph-old>
     <div class="spacer"></div>
-    <story-graph2>
-      <base-line :yPos="baseY"></base-line>
-      <base-line :yPos="baseY + 100"></base-line>
-      <base-line :yPos="baseY + 200"></base-line>
-      <base-line :yPos="baseY - 100"></base-line>
-    </story-graph2>
+
+    <h1>Story Graph</h1>
+    <story-graph>
+      <base-line :yPos="baseY" :lineLength="200"></base-line>
+      <base-line :yPos="baseY + 100" :lineLength="400"></base-line>
+      <base-line :yPos="baseY + 200" :lineLength="800"></base-line>
+      <base-line :yPos="baseY - 100" :lineLength="200"></base-line>
+    </story-graph>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import StoryGraphOld from '@/components/StoryGraphOld.vue'
 import StoryGraph from '@/components/StoryGraph.vue'
-import StoryGraph2 from '@/components/StoryGraph2.vue'
-import BaseLine from "@/components/line/BaseLine";
+import BaseLine from '@/components/line/BaseLine'
 
 export default {
   name: 'home',
   components: {
-    StoryGraph, StoryGraph2, BaseLine
+    StoryGraphOld, StoryGraph, BaseLine
   },
   data () {
     return {

@@ -1,15 +1,15 @@
 import Vue from 'vue'
+
 export const EventBus = new Vue({
-  data() {
+  data () {
     return {
       storyMain: null
     }
   },
   methods: {
-    initStory(storySVG) {
+    initStory (storySVG) {
       this.storyMain = storySVG
       this.$emit('storyInitialized')
-      console.log(storySVG)
     }
   }
 })

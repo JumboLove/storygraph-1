@@ -10,7 +10,14 @@ import { EventBus } from '@/event-bus.js'
 export default {
   name: 'BaseLine',
   props: {
-    yPos: Number
+    yPos: {
+      type: Number,
+      default: 300
+    },
+    lineLength: {
+      type: Number,
+      default: 1000
+    }
   },
   data () {
     return {
@@ -18,15 +25,14 @@ export default {
     }
   },
   mounted () {
-    // this.drawMainLine()
+    this.drawMainLine()
   },
   created () {
-    EventBus.$on('storyInitialized', () => { this.drawMainLine() })
+
   },
   methods: {
     drawMainLine () {
-      // console.log(EventBus.storyMain)
-      let mainLine = EventBus.storyMain.path().M({x: 0, y: this.yPos}).l({x: 1000, y: 0})
+      let mainLine = EventBus.storyMain.path().M({x: 0, y: this.yPos}).l({x: this.lineLength, y: 0})
       mainLine.fill('none')
       mainLine.stroke({ color: 'black', width: 4, linecap: 'round', linejoin: 'round' })
     }
