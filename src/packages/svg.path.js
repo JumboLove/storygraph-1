@@ -3,7 +3,7 @@
  * Copyright (c) 2014 Nils Lagerkvist; Licensed under the  MIT license /
  */
 /* eslint-disable */
-(function() {
+ export default function() {
 
 	var slice = Function.prototype.call.bind(Array.prototype.slice);
 
@@ -217,4 +217,4 @@
 		}
 	});
 
-}).call(this);
+}

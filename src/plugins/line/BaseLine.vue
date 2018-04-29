@@ -5,12 +5,14 @@
 </template>
 
 <script>
-import { EventBus } from '@/event-bus.js'
+import * as SVG from 'svg.js'
+import '@/packages/svg.path.js'
 
 export default {
   name: 'BaseLine',
   props: {
-    yPos: Number
+    yPos: Number,
+    canvas: Object
   },
   data () {
     return {
@@ -18,15 +20,14 @@ export default {
     }
   },
   mounted () {
-    // this.drawMainLine()
+
   },
   created () {
-    EventBus.$on('storyInitialized', () => { this.drawMainLine() })
+    this.drawMainLine()
   },
   methods: {
     drawMainLine () {
-      // console.log(EventBus.storyMain)
-      let mainLine = EventBus.storyMain.path().M({x: 0, y: this.yPos}).l({x: 1000, y: 0})
+      let mainLine = this.canvas.path().M({x: 0, y: this.yPos}).l({x: 1000, y: 0})
       mainLine.fill('none')
       mainLine.stroke({ color: 'black', width: 4, linecap: 'round', linejoin: 'round' })
     }
