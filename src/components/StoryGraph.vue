@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { EventBus } from '@/event-bus.js'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'StoryGraph',
@@ -23,10 +23,13 @@ export default {
     this.drawDebugGrid()
   },
   methods: {
+    ...mapActions([
+      'initStory'
+    ]),
     drawCanvas () {
-      this.draw = this.$svg('story-graph').size(4000, 400) //TODO hard coded size
+      this.draw = this.$svg('story-graph').size(4000, 400) // TODO hard coded size
       this.main = this.draw.group()
-      EventBus.initStory(this.main)
+      this.initStory(this.main)
     },
     drawDebugGrid () {
       let smallBox = this.draw.pattern(25, 25, function (add) {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { EventBus } from '@/event-bus.js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'BranchLine',
@@ -28,6 +28,11 @@ export default {
 
     }
   },
+  computed: {
+    ...mapGetters([
+      'storyMain'
+    ])
+  },
   mounted () {
     this.drawBranchLine()
   },
@@ -36,7 +41,7 @@ export default {
   },
   methods: {
     drawBranchLine () {
-      let branchLine = EventBus.storyMain.path().M({x: this.xPos, y: this.yPos}).c(
+      let branchLine = this.storyMain.path().M({x: this.xPos, y: this.yPos}).c(
         {x: 50, y: 0},
         {x: 50, y: -this.yEnd},
         {x: 100, y: -this.yEnd})

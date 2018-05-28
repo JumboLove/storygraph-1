@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { EventBus } from '@/event-bus.js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'BaseLine',
@@ -24,6 +24,11 @@ export default {
 
     }
   },
+  computed: {
+    ...mapGetters([
+      'storyMain'
+    ])
+  },
   mounted () {
     this.drawMainLine()
   },
@@ -32,7 +37,7 @@ export default {
   },
   methods: {
     drawMainLine () {
-      let mainLine = EventBus.storyMain.path().M({x: 0, y: this.yPos}).l({x: this.lineLength, y: 0})
+      let mainLine = this.storyMain.path().M({x: 0, y: this.yPos}).l({x: this.lineLength, y: 0})
       mainLine.fill('none')
       mainLine.stroke({ color: 'black', width: 4, linecap: 'round', linejoin: 'round' })
     }
