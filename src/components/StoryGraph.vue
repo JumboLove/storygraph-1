@@ -1,7 +1,9 @@
 <template>
-  <svg id="story-graph">
-    <slot v-if="main"></slot>
-  </svg>
+  <div id="story-graph-wrapper">
+    <svg id="story-graph">
+      <slot v-if="main"></slot>
+    </svg>
+  </div>
 </template>
 
 <script>
@@ -22,7 +24,7 @@ export default {
   },
   methods: {
     drawCanvas () {
-      this.draw = this.$svg('story-graph')
+      this.draw = this.$svg('story-graph').size(4000, 400) //TODO hard coded size
       this.main = this.draw.group()
       EventBus.initStory(this.main)
     },
@@ -46,15 +48,18 @@ export default {
 </script>
 
 <style scoped>
+  #story-graph-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
   #story-graph {
     outline: 1px solid #ccc;
-    height: 400px;
+    /* height: 400px; */
+    /* width: 100%; */
   }
 
-  #story-graph {
-    width: 100%;
-  }
-
+  /* invalid, g does not have geometry */
   #story-graph > g {
     width: 100%;
     height: 100%;
