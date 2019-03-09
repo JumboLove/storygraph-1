@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import nodes from '@/store/nodes'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -21,5 +23,8 @@ export default new Vuex.Store({
     initStory ({commit}, storySVG) {
       commit('setStory', storySVG)
     }
+  },
+  modules: {
+    nodes
   }
 })

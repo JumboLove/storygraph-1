@@ -5,13 +5,15 @@
 
     <h1>Story Graph</h1>
     <story-graph>
-      <base-line :yPos="baseY" :lineLength="200"></base-line>
+      <node v-for="node in nodes" :key="node.id" :nodeData="node"></node>
+      <branch-line :yPos="100" :xPos="100" :yEnd="100"></branch-line>
+      <!-- <base-line :yPos="baseY" :lineLength="200"></base-line>
       <base-line :yPos="baseY + 100" :lineLength="400"></base-line>
       <base-line :yPos="baseY + 200" :lineLength="800"></base-line>
       <base-line :yPos="baseY - 100" :lineLength="200"></base-line>
       <branch-line :yPos="baseY -100" :xPos="100" :yEnd="200"></branch-line>
       <branch-line :yPos="baseY + 50" :xPos="200" :yEnd="50"></branch-line>
-      <branch-line :yPos="baseY + 100" :xPos="300" :yEnd="300"></branch-line>
+      <branch-line :yPos="baseY + 100" :xPos="300" :yEnd="300"></branch-line> -->
     </story-graph>
   </div>
 </template>
@@ -22,16 +24,24 @@ import StoryGraphOld from '@/components/StoryGraphOld.vue'
 import StoryGraph from '@/components/StoryGraph.vue'
 import BaseLine from '@/components/line/BaseLine'
 import BranchLine from '@/components/line/BranchLine'
+import Node from '@/components/Node'
+
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
   components: {
-    StoryGraphOld, StoryGraph, BaseLine, BranchLine
+    StoryGraphOld, StoryGraph, BaseLine, BranchLine, Node
   },
   data () {
     return {
       baseY: 300
     }
+  },
+  computed: {
+    ...mapGetters({
+      nodes: 'nodes/all'
+    })
   }
 }
 </script>

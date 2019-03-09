@@ -21,6 +21,10 @@ export default {
     yEnd: {
       type: Number,
       default: 100
+    },
+    color: {
+      type: String,
+      default: 'black'
     }
   },
   data () {
@@ -46,7 +50,7 @@ export default {
         {x: 50, y: -this.yEnd},
         {x: 100, y: -this.yEnd})
       branchLine.fill('none')
-      branchLine.stroke({ color: 'green', width: 4, linecap: 'round', linejoin: 'round' })
+      branchLine.stroke({ color: this.color, width: 4, linecap: 'round', linejoin: 'round' })
     }
   }
 }
